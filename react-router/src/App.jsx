@@ -1,13 +1,13 @@
 import React from 'react'
-import { RouterProvider, createBrowserRouter } from  'react-router-dom'
-import Layout from 'Layout.jsx'
-import About from 'About.jsx'
-import Home from 'Home.jsx'
-import Github  from 'Github.jsx'
-import Params from 'Params.jsx'
-import Contact from 'Contact.jsx'
+/*import { RouterProvider, createBrowserRouter } from  'react-router-dom'
+import Layout from './Layout.jsx'
+import About from './About.jsx'
+import Home from './Home.jsx'
+import Github  from './Github.jsx'
+import Params from './Params.jsx'
+import Contact from './Contact.jsx'
 
-/*const router = createBrowserRouter(
+const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
       <Route path='' element={<Home />} />
@@ -21,8 +21,8 @@ import Contact from 'Contact.jsx'
        />
     </Route>
   )
-)*/
-const router=createBrowserRouter([
+)
+const router = createBrowserRouter([
     {
         path:"/",
         element:<Layout/>,
@@ -46,14 +46,14 @@ const router=createBrowserRouter([
             {
                 path:"param:id",
                 element:<Params/>
-            },
+            }
         ]
     }
-])
+])*/
 
 function App (){
- <div>
-    <RouterProvider router={router}/>
+ <div className='bg-red-400 w-full h-full'> 
+   hiii
  </div>
 }
 
