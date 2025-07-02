@@ -1,13 +1,14 @@
 import React from 'react'
-/*import { RouterProvider, createBrowserRouter } from  'react-router-dom'
-import Layout from './Layout.jsx'
-import About from './About.jsx'
-import Home from './Home.jsx'
-import Github  from './Github.jsx'
-import Params from './Params.jsx'
-import Contact from './Contact.jsx'
 
-const router = createBrowserRouter(
+import { RouterProvider, createBrowserRouter } from  'react-router-dom'
+import Layout from './Layout'
+import About from './About'
+import Home from './Home'
+import Github  from './Github'
+import Params from './Params'
+import Contact from './Contact'
+
+/*const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
       <Route path='' element={<Home />} />
@@ -21,7 +22,7 @@ const router = createBrowserRouter(
        />
     </Route>
   )
-)
+)*/
 const router = createBrowserRouter([
     {
         path:"/",
@@ -49,12 +50,12 @@ const router = createBrowserRouter([
             }
         ]
     }
-])*/
+])
 
 function App (){
- <div className='bg-red-400 w-full h-full'> 
-   hiii
- </div>
+<div>
+  <RouterProvider router={router}/>
+</div>
 }
 
 export default App
