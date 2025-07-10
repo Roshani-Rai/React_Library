@@ -134,7 +134,7 @@ const submit = async (data) => {
                     className="mb-4"
                     {...register("status", { required: true })}
                 />
-                <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className=" rounded-lg w-[80%] text-2xl font-bold shadow-lg shadow-black hover:bg-gray-800 py-[12px] mt-2">
+                <Button type="submit" bgColor={post ? "bg-green-800 hover:bg-green-600" : undefined} className=" rounded-lg w-[80%] text-2xl font-bold shadow-lg shadow-black hover:bg-gray-800 py-[16px] mt-2">
                     {post ? "Update" : "Submit"}
                 </Button>
             </div>
