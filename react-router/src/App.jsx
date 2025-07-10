@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { RouterProvider, createBrowserRouter } from  'react-router-dom'
 import Layout from './Layout'
 import About from './About'
@@ -8,21 +7,7 @@ import Github  from './Github'
 import Params from './Params'
 import Contact from './Contact'
 
-/*const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path='/' element={<Layout />}>
-      <Route path='' element={<Home />} />
-      <Route path='about' element={<About />} />
-      <Route path='contact' element={<Contact />} />
-      <Route path='param/:id' element={<Params />} />
-     <Route 
-      //loader={githubInfoLoader}
-      path='git' 
-    element={<Github />}
-       />
-    </Route>
-  )
-)*/
+
 const router = createBrowserRouter([
     {
         path:"/",
@@ -30,26 +15,26 @@ const router = createBrowserRouter([
         children:[
             {
                 path:"",
-                element:<Home/>
+                element:<Home/>,
             },
             {
                 path:"about",
-                element:<About/>
+                element:<About/>,
             },
             {
                 path:"git",
-                element:<Github/>
+                element:<Github/>,
             },
              {
                 path:"contact",
-                element:<Contact/>
+                element:<Contact/>,
             },
             {
                 path:"param:id",
-                element:<Params/>
+                element:<Params/>,
             }
         ]
-    }
+    },
 ])
 
 function App (){

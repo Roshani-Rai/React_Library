@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tiny.cloud/1/cz59b3afrx3etzahrpf1drxe9uyt6hzbjsc70kwc7ntirjq0/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+      tinymce.init({
+        selector: '#mytextarea'
+      });
+    </script>
+    <title>Vite + React</title>
+  </head>
+  <body bgcolor="black">
+    <div id="root">
+       <h1>TinyMCE Quick Start Guide</h1>
+    <form method="post">
+      <textarea id="mytextarea">Hello, World!</textarea>
+    </form>
+    </div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
