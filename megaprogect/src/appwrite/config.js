@@ -1,6 +1,6 @@
 
 import conf from '../conf/conf.js';
-import { Client, ID, Databases, Storage, Query ,Permission,Role} from "appwrite";
+import { Client, ID, Databases, Storage, Query } from "appwrite";
 
 export class Service{
     client = new Client();
@@ -39,7 +39,7 @@ export class Service{
       }
     );
 
-    console.log("✅ Document created:", result);
+   // console.log("✅ Document created:", result);
     return result;
   } catch (error) {
     console.log("❌ Appwrite service :: createPost :: error", error);
@@ -112,23 +112,20 @@ export class Service{
 
     // file upload service
 
-   async uploadFile(file,userId) {
+   async uploadFile(file) {
   try {
     const result = await this.bucket.createFile(
       conf.appwriteBucketId,
       ID.unique(),
-      file,
-      [Permission.read(Role.any())],// ✅ allow public access
-      Permission.update(Role.user(userId)), // Only specific user can update
-        Permission.delete(Role.user(userId))  // Only specific user can delete
+      file
     );
-    console.log("📤 File uploaded:", result.$id);
     return result;
   } catch (error) {
     console.log("❌ Appwrite service :: uploadFile :: error", error);
     return false;
   }
 }
+
 
 
     async deleteFile(fileId){
