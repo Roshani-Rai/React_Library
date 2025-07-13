@@ -39,7 +39,7 @@ export class Service{
       }
     );
 
-   // console.log("✅ Document created:", result);
+    console.log("✅ Document created:", result);
     return result;
   } catch (error) {
     console.log("❌ Appwrite service :: createPost :: error", error);
@@ -141,9 +141,9 @@ export class Service{
         }
     }
 
-  getFilePreview(fileId) {
-  const url = this.bucket.getFilePreview(conf.appwriteBucketId, fileId);
-  console.log("🔗 Preview URL:", url); // Add this!
+  getFileView(fileId) {
+  const url = this.bucket.getFileView(conf.appwriteBucketId, fileId);
+ // console.log("🔗 Preview URLmain:", url); // Add this!
   return url;
 }
 

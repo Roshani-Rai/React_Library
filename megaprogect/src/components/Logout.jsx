@@ -15,7 +15,7 @@ function Logout(){
     }
     return(
        <Button
-    className=' mt-[12px] text-2xl  py-[14.3px] px-3 shadow-black shadow-xl font-bold  duration-200 hover:bg-gray-800 '
+    className=' mt-[12px] text-2xl  py-[13px] px-3 shadow-black shadow-xl font-bold  duration-200 hover:bg-gray-800 '
     onClick={handler}
     >Logout</Button>
   )

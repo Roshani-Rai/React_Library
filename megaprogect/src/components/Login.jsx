@@ -40,7 +40,7 @@ function Login(){
                />
                     </span>
         </div>
-        <h2 className="text-center text-3xl font-bold leading-tight">Sign in to your account</h2>
+        <h2 className="text-center text-3xl font-bold leading-tight">Login in to your account</h2>
         <p className="mt-2 text-center text-base text-black/60">
                     Don&apos;t have any account?&nbsp;
                     <Link
@@ -72,7 +72,7 @@ function Login(){
                     required:true,
                 })}
                 />
-                <Button type="submit" className='rounded-lg w-[80%] text-2xl font-bold shadow-lg shadow-gray-800 hover:bg-black  py-[16px] mt-3'> Sign-in</Button>
+                <Button type="submit" className='rounded-lg w-[80%] text-2xl  bg-blue-600 font-bold shadow-lg shadow-gray-800 hover:bg-blue-700  py-[16px] mt-3'> Sign-in</Button>
              </div>
         </form>
         </div>

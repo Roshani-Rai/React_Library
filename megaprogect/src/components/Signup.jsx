@@ -73,7 +73,7 @@ function Signup(){
                                           required:true,
                                       })}
                                       />
-                                       <Button type="submit" className='rounded-lg w-[80%] text-2xl font-bold shadow-lg shadow-gray-800 hover:bg-black  py-[16px] mt-3'> Create Account </Button>
+                                       <Button type="submit" className='rounded-lg w-[80%] text-2xl bg-blue-600 font-bold shadow-lg shadow-gray-800 hover:bg-blue-700 py-[16px] mt-3'> Create Account </Button>
                      </div>
                  </form>
                 </div>

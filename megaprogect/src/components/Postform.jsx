@@ -16,7 +16,7 @@ export default function  Postform({post}){
        
      const navigate = useNavigate();
     const userData = useSelector((state) => state.auth.userData);
-
+         console.log(userData);
 
 
 const submit = async (data) => {
@@ -26,18 +26,30 @@ const submit = async (data) => {
       return;
     }
 
-    if (post) {
-      // Edit existing post
-      const file = data.image[0] ? await service.uploadFile(data.image[0]) : null;
-           console.log("📦 Uploaded file ID:", file?.$id);
+   if (post) {
+  // Edit existing post
+  let uploadedFile = null;
 
-      if (file) await service.deleteFile(data.featuredImage);
+  if (data.image && data.image[0]) {
+    // Only upload a new file if one is selected
+    uploadedFile = await service.uploadFile(data.image[0]);
+    console.log("📦 Uploaded file ID:", uploadedFile?.$id);
+    console.log("📁 Selected file:", uploadedFile);
+    console.log("📄 File type:", uploadedFile.type);
 
-      const dbPost = await service.updatePost(post.$id, {
-        ...data,
-        featuredImage: file ? file.$id : post.featuredImage,
-      });
+    // Delete old image if new one is uploaded
+    if (uploadedFile) {
+      await service.deleteFile(post.featuredImage);
+    }
+  }
 
+  // Update the post with or without new image
+  const dbPost = await service.updatePost(post.$id, {
+    title: data.title,
+    content: data.content,
+    status: data.status,
+    featuredImage: uploadedFile ? uploadedFile.$id : post.featuredImage,
+  });
       if (dbPost) navigate(`/post/${dbPost.$id}`);
     } else {
       // Create new post
@@ -112,22 +124,24 @@ const submit = async (data) => {
                     accept="image/png, image/jpg, image/jpeg, image/gif"
                     {...register("image", { required: !post })}
                 />
-                {post && (() => {
-                    const previewUrl = service.getFilePreview(post.featuredImage);
-                 console.log("📸 Image Preview URL:", previewUrl); // <-- Debug log
 
-                   return (
-                 <div className="w-full  shadow-lg shadow-black mb-4">
-                  <img
-                  src={previewUrl}
-                  alt={post.title}
-                  className="rounded-lg"
-                   onError={() => console.log("❌ Image failed to load")}
-                  />
-                 </div>
-                  );
-                 })()}
-              
+
+            {post && (() => {
+  const previewUrl = service.getFileView(post.featuredImage);
+  console.log("📸 Image Preview URL:", previewUrl);
+
+  return (
+    <div className="w-full rounded-xl mb-4">
+      <img
+        src={previewUrl}
+        alt={post.title}
+        className="rounded-xl w-full border-2 shadow-xl shadow-black border-gray-400"
+        onError={() => console.log("❌ Image failed to load")}
+      />
+    </div>
+  );
+})()}
+
                 <Select
                     options={["active", "inactive"]}
                     label="Status :"
