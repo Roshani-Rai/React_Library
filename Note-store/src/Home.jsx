@@ -20,35 +20,39 @@ function Home(){
  }
 },[pasteId,note])
     function addHandler(){
-        const paste={
-           id:nanoid(),
+      const existingPastes=note.find((p)=>p.id===pasteId)
+        const paste={ 
+           id:pasteId?pasteId:nanoid(),
           title:input,
           content:Content,
+          created:existingPastes?existingPastes.created:new Date().toDateString(),
+          updated:existingPastes?new Date().toDateString():null
         }
         if(pasteId){
          dispatch(update(paste))
         }
         else{
           dispatch(add(paste));
-        }
-       setInput('');
+          setInput('');
          setContent('');
+        }
+      
     }
 
     return (
-      <div className='bg-blue-900 w-full h-full'>
+      <div className='bg-blue-800 w-full h-full'>
         <h1 className='font-bold text-4xl  text-white px-4 py-7'><u>Add your Notes Here for access in future</u></h1>
         <div className='flex justify-center p-7'>
         <input 
         type="text"
         placeholder="Enter Your Notes Title"
         value={input}
-        className='rounded-md px-4 py-2 text-xl w-96 mx-3 '
+        className='rounded-md px-4 py-2 text-xl w-96 mx-3 shadow-lg shadow-black '
         onChange={(e)=>setInput(e.target.value)}
         />
         <button 
         type='submit'
-        className='rounded-md px-4 py-2 text-xl bg-slate-300 font-bold'
+        className='rounded-md px-4 py-2 text-xl shadow-lg shadow-black bg-slate-300 font-bold'
         onClick={addHandler}
         >  {
           pasteId? "Update My Paste":"Create My Paste"
@@ -58,7 +62,7 @@ function Home(){
         type='text'
         value={Content}
         placeholder='Enter Your Content Here'
-        className='w-[80%] py-4 px-5 rounded-lg text-2xl shadow-lg  border-2 border-blue-950'
+        className='w-[80%] py-4 px-5 rounded-lg text-2xl mb-7 shadow-2xl shadow-black border-2 border-blue-950'
         rows={20}
         onChange={(e)=>setContent(e.target.value)}
         />

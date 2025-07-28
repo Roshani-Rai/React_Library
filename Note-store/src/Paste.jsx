@@ -11,7 +11,7 @@ function Paste(){
     const filterData=pastes.filter((paste)=>paste.title.toLowerCase().includes(search.toLowerCase()));
     
     return(
-     < div className='bg-blue-900 w-full h-full'>
+     < div className='bg-blue-800 w-full h-full'>
          <input
       type='search'
       placeholder='Search Here'
@@ -24,10 +24,14 @@ function Paste(){
       {filterData.length>0&&filterData.map((paste)=>(
         <div className='border-2 border-black shadow-xl shadow-black w-[93%] mb-8 mx-8 rounded-lg pt-3 pb-8 '  key={paste.id}>
         <div className='flex flex-col items-start'>
-          <div className='text-3xl text-white font-bold px-8'>{paste.title}</div>
+          <div className='text-3xl text-white font-bold   my-3 px-8'>{paste.title}</div>
           <div className='text-2xl text-gray-200 font-semibold px-8'>{paste.content}</div>
+           <div className='text-gray-400 text-[16px] font-bold mt-5 mx-6'>Created on : {paste.created}</div>
+            <div className='text-gray-400 text-[16px] font-bold mb-1 mx-6'>
+            { paste.updated&& <div>Last Updated on : {paste.updated}</div>}
+              </div>
              </div>
-          <div className='flex flex-row gap-2 justify-end mx-4 -mt-6'>
+          <div className='flex flex-row gap-2 justify-end mx-4 -mt-16'>
             <button className='rounded-md px-4 text-white py-2 text-[15px] bg-slate-800 font-bold'>
                < Link to={`/paste/${paste?.id}`}>
                <i className="fa-solid fa-eye" style={{color:'white'}}></i>View </Link> </button>

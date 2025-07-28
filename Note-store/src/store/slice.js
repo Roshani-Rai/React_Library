@@ -7,10 +7,12 @@ import {toast } from 'react-hot-toast'
 
 export const pasteSlice=createSlice({
     name:'paste',
+
     initialState,
     reducers:{
         add:(state,action)=>{
           const paste=action.payload;
+          console.log(paste)
         state.pastes.push(paste);
         localStorage.setItem("pastes",JSON.stringify(state.pastes));
         toast.success("Paste Created Successfully");
