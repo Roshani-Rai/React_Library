@@ -1,8 +1,18 @@
 import {createSlice} from '@reduxjs/toolkit'
 
-const initialState={
-    score:localStorage.getItem("score")?JSON.parse(localStorage.getItem("score")):[]
-}
+const initialState = {
+  score: (() => {
+    try {
+      const data = localStorage.getItem("score");
+      return data ? JSON.parse(data) : [];
+    } catch (err) {
+      console.error("❌ Error parsing localStorage score:", err);
+      localStorage.removeItem("score"); // Clean corrupted storage
+      return [];
+    }
+  })(),
+};
+
 
 export const scoreSlice=createSlice({
     name:'score',
@@ -56,10 +66,36 @@ export const scoreSlice=createSlice({
          state.score=[];
          localStorage.setItem("score",JSON.stringify(state.score))       
         },
-        updateScore:(state,action)=>{
-           state.score=action.payload.score;
-         localStorage.setItem("score",JSON.stringify(state.score))
-        },
+        updateScore: (state, action) => {
+  const { id, score } = action.payload;
+
+  // Update score for the specific player
+  const updatedScores = state.score.map(p =>
+    p.id === id ? { ...p, score } : p
+  );
+
+  // Recalculate rankings safely
+  const rankedPlayer = updatedScores
+    .slice() // copy array
+    .sort((a, b) => {
+      if (a.score !== b.score) return b.score - a.score;
+      return new Date(a.created || 0) - new Date(b.created || 0); // avoid crash
+    })
+    .map((entry, index) => ({
+      ...entry,
+      rank: index + 1,
+    }));
+
+  // Save back
+  state.score = rankedPlayer;
+
+  try {
+    localStorage.setItem("score", JSON.stringify(state.score));
+  } catch (e) {
+    console.error("Failed to save score to localStorage:", e);
+  }
+}
+
     }
 })
 

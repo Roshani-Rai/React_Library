@@ -44,11 +44,11 @@ const route=createBrowserRouter([
 ])
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  //<StrictMode>
     
     <Provider store={store}>
    <RouterProvider router={route}></RouterProvider>
     </Provider>
     
-  </StrictMode>,
+  //</StrictMode>,
 )

@@ -4,10 +4,14 @@ import { useDispatch } from 'react-redux'
 import {add} from '../store/slice.js'
 import {useNavigate} from 'react-router-dom'
 import { nanoid } from '@reduxjs/toolkit'
+import { ClickMusic } from './music.js'
+
 function App() {
   const [input ,setInput]=useState('');
   const dispatch=useDispatch();
-  const navigate=useNavigate()
+  const navigate=useNavigate();
+  /*const [play,setPlay]=useState(true);
+  const audioRef=useRef(null);*/
   function handler(value){
      const id=nanoid() 
     if(value=='') {alert("Please First enter Your Name");
@@ -25,13 +29,26 @@ function App() {
     navigate(`/page/${id}`);
   }
 }
+
+/*useEffect(() => {
+    // Play music on mount
+       audioRef.current.play().catch((e) => {
+      console.log("Autoplay failed", e);
+       });
+
+       return () => {
+      // Pause when component unmounts
+      if(audioRef.current)
+      audioRef.current.pause();
+       };
+       }, []);*/
   return (
     <div className='relative'>
       <div className='flex justify-between relative'>
           <img src="https://cartoonsco-media.s3.amazonaws.com/uploads/2022/08/preview-of-snake-animated-gif-pointing.gif" className='w-52 scale-x-[-1] -mt-[3rem]'/>
         <img src="https://cartoonsco-media.s3.amazonaws.com/uploads/2022/08/preview-of-snake-animated-gif-pointing.gif" className='w-52 -mt-[3rem]'/>
         </div>
-        <div className='flex flex-col justify-end items-center absolute bottom-12'>
+        <div className='flex flex-col justify-end items-center absolute bottom-14'>
         <img src="https://media3.giphy.com/media/5fwoTYsw2D6yFI5X9x/giphy.gif" className=""/>
           </div>
         <div className='flex flex-col justify-end items-center absolute bottom-12 right-2'>
@@ -46,11 +63,16 @@ function App() {
     value={input}
     onChange={(e)=>setInput(e.target.value)}
     />
-   <button onClick={()=>handler(input)}
+   <button onClick={()=>{
+    ClickMusic();
+    handler(input);
+    }
+  }
     className='rounded-lg w-72 h-16 text-2xl font-bold text-green-600 bg-red-800  border-[7px] border-double border-green-800 border-spacing-96 shadow-2xl shadow-black hover:bg-red-900 tansition-all duration-250'
     >Start the Game</button>
    </div>
    </div>
+   
    </div>
   )
 }

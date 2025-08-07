@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link,useParams} from 'react-router-dom'
+import { ClickMusic } from './music';
 
 function Page(){
   const {id}=useParams();
@@ -19,12 +20,20 @@ function Page(){
           </div>
       <div className='flex justify-center items-center h-[100vh] -mt-20'>
        <div className='flex flex-col py-28 px-20 w-[500px] h-[500px] bg-transparent  border-[5px]  border-green-800 border-spacing-96 shadow-2xl shadow-black'>
-        <Link to={`/classicSnake/${id}`}
-        className='rounded-2xl my-10 py-5 w-80 px-2 h-20 text-2xl font-bold text-green-600 bg-red-800  border-[7px] border-double border-green-800 border-spacing-96 shadow-2xl shadow-black hover:bg-red-900 tansition-all duration-250'
-        >Classical Snake Game</Link>
-         <Link to={`/advanceSnake/${id}`}
-         className='rounded-2xl w-80 h-20 py-5 px-2 text-2xl font-bold text-green-600 bg-red-800  border-[7px] border-double border-green-800 border-spacing-96 shadow-2xl shadow-black hover:bg-red-900 tansition-all duration-250'
-         >Advanced Snake Game</Link>
+        <Link to={`/classicSnake/${id}`}>
+       <button onClick={ClickMusic} className='rounded-2xl my-10 py-5 w-80 px-2 h-20 text-2xl font-bold
+        text-green-600 bg-red-800  border-[7px] border-double border-green-800 border-spacing-96 shadow-2xl
+         shadow-black hover:bg-red-900 tansition-all duration-250'
+        >Classical Snake Game</button>
+        </Link>
+         <Link to={`/advanceSnake/${id}`}>
+        <button onClick={ClickMusic} 
+        className='rounded-2xl w-80 h-20 py-5 px-2 text-2xl font-bold text-green-600
+         bg-red-800  border-[7px] border-double border-green-800 border-spacing-96 
+         shadow-2xl shadow-black hover:bg-red-900 tansition-all duration-250'
+         >Advanced Snake Game
+        </button>
+         </Link>
        </div>
        </div>
        </div>

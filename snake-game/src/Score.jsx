@@ -5,17 +5,23 @@ import {useDispatch,useSelector} from 'react-redux'
 
 function Score(){
   const dispatch=useDispatch()
-   const player= useSelector((state)=>state.scores.score)
-   console.log(player)
+   const player= useSelector((state)=>state.scores.score);
+   
+   //console.log(player)
+
+   
    return(
     <div className='relative'>
-      <div className='flex flex-col justify-end absolute left-[1px]'>
-        <img src="https://media3.giphy.com/media/5fwoTYsw2D6yFI5X9x/giphy.gif" className=" rotate-45"/>   
-         <img src="https://media3.giphy.com/media/5fwoTYsw2D6yFI5X9x/giphy.gif" className="scale-x-[-1] rotate-45"/>      
+      <div className='flex flex-col justify-end absolute -left-[1px]'>
+        <img src="https://media3.giphy.com/media/5fwoTYsw2D6yFI5X9x/giphy.gif" className=" rotate-45 scale-x-[-1] -ml-16"/>   
+         <img src="https://media3.giphy.com/media/5fwoTYsw2D6yFI5X9x/giphy.gif" className="scale-x-[-1] rotate-45 -mx-32 -mb-6"/>      
           </div>
-            <div className='flex flex-col justify-end absolute top-14 -right-[55px]'>
+          <div className='absolute top-[26rem] flex flex-col justify-end'>
+             <img src="https://media3.giphy.com/media/5fwoTYsw2D6yFI5X9x/giphy.gif" className=" scale-x-[-1] "/>   
+          </div>
+            <div className='flex flex-col justify-end absolute top-14 -right-[45px]'>
         <img src="https://media3.giphy.com/media/5fwoTYsw2D6yFI5X9x/giphy.gif" className=" rotate-45 -right-8"/>   
-         <img src="https://media3.giphy.com/media/5fwoTYsw2D6yFI5X9x/giphy.gif" className="scale-x-[-1] rotate-45"/>      
+         <img src="https://media3.giphy.com/media/5fwoTYsw2D6yFI5X9x/giphy.gif" className="scale-x-[-1] rotate-180"/>      
           </div>
         <div className='text-pink-700 text-[3rem] -my-3 mb-5 font-bold text-center'><u> Score board</u></div>
       
@@ -45,6 +51,9 @@ function Score(){
     </div>
     </div>
     </div>
+
+    
+
       </div>
    )
 }
